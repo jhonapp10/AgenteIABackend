@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recordatorios Inteligentes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6 font-sans">
+  <div class="max-w-xl mx-auto bg-white shadow-lg rounded-xl p-6">
+    <h1 class="text-2xl font-bold mb-4">📋 Tareas Programadas</h1>
+
+    <form id="tareaForm" class="mb-4 space-y-2">
+      <input id="descripcion" type="text" placeholder="Descripción" required class="w-full p-2 border rounded"/>
+      <input id="fecha" type="datetime-local" required class="w-full p-2 border rounded"/>
+      <label><input type="checkbox" name="dias_semana" value="MO"> Lunes</label>
+      <label><input type="checkbox" name="dias_semana" value="TU"> Martes</label>
+...   <label><input type="checkbox" name="dias_semana" value="WE"> Miercoles</label>
+      <label><input type="checkbox" name="dias_semana" value="TH"> Jueves</label>
+      <label><input type="checkbox" name="dias_semana" value="FR"> Viernes</label>
+      <label><input type="checkbox" name="dias_semana" value="SA"> Sabado</label>
+      <label><input type="checkbox" name="dias_semana" value="SU"> Domingo</label>
+      <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Agregar Tarea</button>
+      <label><input type="checkbox" name="repetir"> Repetir</label>
+
+    </form>
+
+    <ul id="tareaLista" class="space-y-2"></ul>
+  </div>
+
+  <script>
+    const API = "http://127.0.0.1:8000";
+    const tareaForm = document.getElementById("tareaForm");
+    const tareaLista = document.getElementById("tareaLista");
+
+    async function cargarTareas() {
+      const res = await fetch(`${API}/tareas`);
+      const tareas = await res.json();
+      tareaLista.innerHTML = "";
+      tareas.forEach(t => {
+        const li = document.createElement("li");
+        li.className = "bg-gray-200 p-3 rounded flex justify-between items-center";
+        li.innerHTML = `
+          <div>
+            <strong>${t.descripcion}</strong><br>
+            <small>${t.fecha}</small>
+          </div>
+          <button onclick="eliminarTarea('${t.id}')" class="text-red-500 hover:text-red-700">🗑️</button>
+        `;
+        tareaLista.appendChild(li);
+      });
+    }
+
+    async function eliminarTarea(id) {
+      await fetch(`${API}/tareas/${id}`, { method: "DELETE" });
+      cargarTareas();
+    }
+
+    tareaForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const descripcion = document.getElementById("descripcion").value;
+      const fecha = document.getElementById("fecha").value;
+      await fetch(`${API}/tareas`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ descripcion, fecha })
+      });
+      tareaForm.reset();
+      cargarTareas();
+    });
+
+    cargarTareas();
+  </script>
+</body>
+</html>

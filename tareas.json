@@ -1,0 +1,86 @@
+[
+    {
+        "id": "a2c7e9e1-2e93-4054-ab7f-b0a6ece7edf3",
+        "descripcion": "reparaciones varias",
+        "fecha": "2025-05-04T05:00",
+        "repetir": false,
+        "dias_semana": null
+    },
+    {
+        "id": "6850ede2-c8fa-4e16-be3c-12b1af4454a5",
+        "descripcion": "tarea1",
+        "fecha": "2025-04-25T23:30",
+        "repetir": false,
+        "dias_semana": null
+    },
+    {
+        "id": "110f75bf-39c1-439f-a394-0694446c743c",
+        "descripcion": "tarea2",
+        "fecha": "2025-04-25T23:47",
+        "repetir": false,
+        "dias_semana": null
+    },
+    {
+        "id": "267412d0-0c48-4f56-ae51-bfcdeae8fdae",
+        "descripcion": "ba\u00f1arse en 5 minutos",
+        "fecha": "2025-04-25T23:51",
+        "repetir": false,
+        "dias_semana": null
+    },
+    {
+        "id": "edd4cea0-0529-4aac-a6a1-ebbc117d65bf",
+        "descripcion": "hola es hora de ducharse",
+        "fecha": "2025-04-25T23:54",
+        "repetir": false,
+        "dias_semana": null
+    },
+    {
+        "id": "03e6b577-bd81-49d9-8910-d21375ff1710",
+        "descripcion": "ducharse de una vez",
+        "fecha": "2025-04-25T23:57",
+        "repetir": false,
+        "dias_semana": null
+    },
+    {
+        "id": "69134efc-1028-43a1-8c00-b76919af36db",
+        "descripcion": "reparaciones varias",
+        "fecha": "2025-04-25T23:59",
+        "repetir": false,
+        "dias_semana": null
+    },
+    {
+        "id": "2711ad63-c4f9-48e3-b484-4461e6b93ca7",
+        "descripcion": "tarea de casa",
+        "fecha": "2025-04-26T01:41",
+        "repetir": true,
+        "dias_semana": []
+    },
+    {
+        "id": "a9722fa7-51cf-49b9-aaa0-04806d450fee",
+        "descripcion": "hhhhhhh",
+        "fecha": "2025-04-26T02:02",
+        "repetir": false,
+        "dias_semana": []
+    },
+    {
+        "id": "37afd144-dfe8-4c26-85ae-a231b2f32557",
+        "descripcion": "hola",
+        "fecha": "2025-04-26T02:04",
+        "repetir": true,
+        "dias_semana": []
+    },
+    {
+        "id": "f8106d91-28e7-48fe-9536-6800c2d7d0bd",
+        "descripcion": "hola 2",
+        "fecha": "2025-04-26T02:09",
+        "repetir": false,
+        "dias_semana": []
+    },
+    {
+        "id": "3477f207-e74a-482a-b8d3-458293e05611",
+        "descripcion": "hora de levantarse",
+        "fecha": "2025-04-26T02:10",
+        "repetir": false,
+        "dias_semana": []
+    }
+]
