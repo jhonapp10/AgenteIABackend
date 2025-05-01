@@ -16,7 +16,7 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 from utils import enviar_a_google_home, enviar_mensaje_a_google_home, generar_mp3, programar_tarea_cronica
 # Inicializar Firebase
-cred = credentials.Certificate(r'C:\\Users\\jseba\\Documents\\AGHouse\\private\\agenteia.json')
+cred = credentials.Certificate(os.getenv("FIREBASE_KEY_PATH"))
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
