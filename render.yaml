@@ -10,9 +10,4 @@ services:
         value: /etc/secrets/agenteia.json
     secretFiles:
       - path: /etc/secrets/agenteia.json
-        contents: |
-          {
-            "type": "service_account",
-            "project_id": "...",
-            ...
-          }
+        name: agenteia-json
