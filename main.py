@@ -10,7 +10,7 @@ import os
 import schedule
 import threading
 import time
-import pyttsx3
+#import pyttsx3
 from flask import Flask, request, jsonify
 import firebase_admin
 from firebase_admin import credentials, firestore
@@ -40,7 +40,7 @@ now =datetime.now(timezone.utc)  # Convertir `now` a un datetime con zona horari
 
 # Asegúrate que el directorio static/mensajes existe
 os.makedirs('static/mensajes', exist_ok=True)
-tts = pyttsx3.init()
+#tts = pyttsx3.init()
 scheduler = BackgroundScheduler()
 scheduler.start()
 
@@ -107,7 +107,7 @@ def guardar_tareas(tareas: List[Tarea]):
 
 # 🔔 Notificador
 def recordar_tarea(tarea: Tarea):
-    tts = pyttsx3.init()
+    #tts = pyttsx3.init()
     nombre_archivo = f"recordatorio_{int(time.time())}.mp3"
     print("nombre de archivo: ", nombre_archivo)
     msg = f"Recordatorio: {tarea.descripcion}" 
