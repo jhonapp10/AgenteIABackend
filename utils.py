@@ -3,17 +3,11 @@ import os
 from datetime import datetime, time
 import pyttsx3
 import pychromecast
-
-tts = pyttsx3.init()
+from gtts import gTTS
 
 # Configuración básica
 GOOGLE_HOME_NAME = "Google nest salon"  # <-- CAMBIA esto por el nombre real de tu dispositivo
 SERVER_URL = "http://192.168.68.104:5000/static/mensajes/"  # Donde sirves los audios
-
-
-def recordar_cronica(texto):
-    tts.say(texto)
-    tts.runAndWait()
 
 def programar_tarea_cronica(tarea):
     if not tarea.dias_semana:
@@ -41,10 +35,12 @@ def programar_tarea_cronica(tarea):
 def generar_mp3(texto: str, nombre_archivo: str) -> str:
     """Genera el MP3 usando pyttsx3 y espera que se complete."""
     ruta = os.path.join('static', 'mensajes', nombre_archivo)
-    engine = pyttsx3.init()
-    engine.setProperty('rate', 140)  # ✅ Velocidad más natural (default suele ser 200)
-    engine.save_to_file(texto, ruta)
-    engine.runAndWait()  # 🔥 Aquí garantiza que el archivo ya esté escrito
+    tts = gTTS(text=texto, lang='es')
+    tts.save(nombre_archivo)
+    #engine = pyttsx3.init()
+    #engine.setProperty('rate', 140)  # ✅ Velocidad más natural (default suele ser 200)
+    #engine.save_to_file(texto, ruta)
+    #engine.runAndWait()  # 🔥 Aquí garantiza que el archivo ya esté escrito
     while not os.path.exists(ruta):
         time.sleep(0.1)  # Espera a que realmente esté creado
     print(f"[INFO] MP3 generado en {ruta}")
