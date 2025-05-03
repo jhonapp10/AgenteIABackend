@@ -23,9 +23,15 @@ db = firestore.client()
 
 app = FastAPI()
 
+# 🔒 CORS setup
+origins = [
+    "https://agenteia-d4a1f.web.app",   # Tu frontend desplegado
+    "http://localhost:4200"             # Por si pruebas localmente Angular
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
