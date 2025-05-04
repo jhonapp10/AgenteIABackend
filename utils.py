@@ -36,7 +36,7 @@ def generar_mp3(texto: str, nombre_archivo: str) -> str:
     """Genera el MP3 usando pyttsx3 y espera que se complete."""
     ruta = os.path.join('static', 'mensajes', nombre_archivo)
     tts = gTTS(text=texto, lang='es')
-    tts.save(nombre_archivo)
+    tts.save(ruta)
     #engine = pyttsx3.init()
     #engine.setProperty('rate', 140)  # ✅ Velocidad más natural (default suele ser 200)
     #engine.save_to_file(texto, ruta)
@@ -67,16 +67,16 @@ def enviar_mensaje_a_google_home(nombre_archivo: str):
     cast.wait()
     mc = cast.media_controller
 
-    url_mp3 = f"{SERVER_URL}{nombre_archivo}"
+    url_mp3 = f"https://hagente-ia-iscq.onrender.com/static/mensajes/{nombre_archivo}"
     mc.play_media(url_mp3, 'audio/mp3')
     mc.block_until_active()
      # 🧠 Leer duración del MP3
-    audio = url_mp3(f'static/mensajes/{nombre_archivo}')
-    duracion = audio.info.length
+    #audio = url_mp3(f'static/mensajes/{nombre_archivo}')
+    #duracion = audio.info.length
 
     # 💤 Esperar a que termine
-    print(f"Esperando {duracion:.2f} segundos para completar reproducción...")
-    time.sleep(duracion + 1)  # Añadimos un segundo extra de margen
+    #print(f"Esperando {duracion:.2f} segundos para completar reproducción...")
+    #time.sleep(duracion + 1)  # Añadimos un segundo extra de margen
 
-    browser.stop_discovery()
+    #browser.stop_discovery()
     print(f"[INFO] Mensaje enviado al Google Home: {url_mp3}")
