@@ -15,6 +15,11 @@ from flask import Flask, request, jsonify
 import firebase_admin
 from firebase_admin import credentials, firestore
 from utils import enviar_a_google_home, enviar_mensaje_a_google_home, generar_mp3, programar_tarea_cronica
+
+from fastapi.staticfiles import StaticFiles
+
+
+
 # Inicializar Firebase
 firebase_key_json = os.getenv("FIREBASE_KEY_JSON")
 if not firebase_key_json:
@@ -43,6 +48,7 @@ app.add_middleware(
 now =datetime.now(timezone.utc)  # Convertir `now` a un datetime con zona horaria UTC
 
 # Asegúrate que el directorio static/mensajes existe
+app.mount("/static", StaticFiles(directory="static"), name="static")
 os.makedirs('static/mensajes', exist_ok=True)
 #tts = pyttsx3.init()
 scheduler = BackgroundScheduler()
